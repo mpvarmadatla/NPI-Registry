@@ -1,10 +1,10 @@
 name: react-native-android-build-apk
 
-on:[push]
+on: [push]
 
 jobs:
-   install:
-     run-on: ubuntu-latest
+  install:
+   runs-on: ubuntu-latest
    steps:
      - uses: actions/checkout@v3
      - name: install npm
@@ -14,5 +14,5 @@ jobs:
      - name: upload Artificat
        uses: actions/upload-artifact@v3
        with:
-         name: app-release.apk
-         path: android/app/build/outputs/apk/release
+        name: app-release.apk
+        path: android/app/build/outputs/apk/release
