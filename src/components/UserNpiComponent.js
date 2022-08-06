@@ -13,7 +13,7 @@ const UserNpiComponent = ({route}) =>{
     }
     
   },[route.params?.lastname])
-  console.log(data)
+ 
     return(
         <View style={{backgroundColor:'#fff',flex:1,paddingTop:10,paddingHorizontal:10}}>
          <View style={{flexDirection:'row',justifyContent:'space-around',alignItems:'center',borderBottomWidth:1,borderBottomColor:'#D3D3D3'}}>
