@@ -1,8 +1,18 @@
 import React, { useState } from "react";
-import {Text,View,StyleSheet, TextInput,Button} from 'react-native';
+import {Text,View,StyleSheet, TextInput,Button, Alert} from 'react-native';
 
 const HomeNpiComponent = ({navigation}) =>{
     const [text,setText] = useState(null)
+    const onPress = () =>{
+        if(text){
+            navigation.navigate('UserList',{
+                lastname:text
+            })
+            return
+        }
+
+       return Alert.alert("Check LastName","lastname cannot be empty",[{text:"cancel",style:"cancel"}],{cancelable:true})
+    }
     return(
         <View style={Styles.container}>
             <View style={Styles.box}>
@@ -10,9 +20,7 @@ const HomeNpiComponent = ({navigation}) =>{
             <View style={{borderWidth:1,marginBottom:10}}>
                 <TextInput onChangeText={(text)=>setText(text)}/>
             </View>
-            <Button title="submit" onPress={()=>navigation.navigate('UserList',{
-                lastname:text
-            })} />
+            <Button title="submit" onPress={onPress} />
             </View>
         </View>
     )
