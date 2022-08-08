@@ -8,7 +8,7 @@ const HomeNpiComponent = ({navigation}) =>{
     const username = useSelector((state)=>state.user.username)
     const onPress = () =>{
         if(text){
-            navigation.navigate('UserList',{
+            navigation.navigate('MatchedUserList',{
                 lastname:text
             })
             return
@@ -28,7 +28,7 @@ const HomeNpiComponent = ({navigation}) =>{
             <ScrollView>
             {data && data.map((item)=> <View key={item.type}>
                 <Text style={{marginBottom:10,color:'#000'}}>{item.type}</Text>
-                <TextInput style={Styles.textInput}  /></View>)}
+                <TextInput style={Styles.textInput} onChangeText={(text)=>setText(text)} /></View>)}
             <View style={{width:300}}>
             <Button title="submit" onPress={onPress}  />
             </View>

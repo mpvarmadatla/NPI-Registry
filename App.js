@@ -16,7 +16,7 @@ const App = () =>{
       <Stack.Navigator>
           <Stack.Screen name='User' component={UserLoginComponent} options={{headerShown:false}} />
           <Stack.Screen name='Home' component={HomeNpiComponent} options={{headerShown:false}} />
-           <Stack.Screen name='UserList' component={UserNpiComponent} />
+           <Stack.Screen name='MatchedUserList' component={UserNpiComponent} />
            <Stack.Screen name='UserProfile' component={UserProfileComponent} />
       </Stack.Navigator>
     </NavigationContainer>
