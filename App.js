@@ -10,13 +10,12 @@ import {store} from './src/store';
 
 const App = () =>{
   const Stack = createNativeStackNavigator();
-  const username = "manoj"
   return(
     <Provider store={store}>
     <NavigationContainer>
       <Stack.Navigator>
           <Stack.Screen name='User' component={UserLoginComponent} options={{headerShown:false}} />
-          <Stack.Screen name='Home' component={HomeNpiComponent} />
+          <Stack.Screen name='Home' component={HomeNpiComponent} options={{headerShown:false}} />
            <Stack.Screen name='UserList' component={UserNpiComponent} />
            <Stack.Screen name='UserProfile' component={UserProfileComponent} />
       </Stack.Navigator>
