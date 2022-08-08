@@ -128,6 +128,8 @@ def reactNativeArchitectures() {
     return value ? value.split(",") : ["armeabi-v7a", "x86", "x86_64", "arm64-v8a"]
 }
 
+
+
 android {
     ndkVersion rootProject.ext.ndkVersion
 
@@ -139,6 +141,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
 
         if (isNewArchitectureEnabled()) {
@@ -167,7 +170,6 @@ android {
             }
         }
     }
-
     if (isNewArchitectureEnabled()) {
         // We configure the NDK build only if you decide to opt-in for the New Architecture.
         externalNativeBuild {
@@ -218,6 +220,14 @@ android {
         }
     }
     signingConfigs {
+        // release {
+        //     if(project.hasProperty('MYAPP_UPLOAD_STORE_FILE')){
+        //       storeFile file(MYAPP_UPLOAD_STORE_FILE)
+        //       storePassword MYAPP_UPLOAD_STORE_PASSWORD
+        //       keyAlias MYAPP_UPLOAD_KEY_ALIAS
+        //       keyPassword MYAPP_UPLOAD_KEY_PASSWORD
+        //     }
+        // }
         debug {
             storeFile file('debug.keystore')
             storePassword 'android'
@@ -232,7 +242,8 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            // signingConfig signingConfigs.release
+             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
