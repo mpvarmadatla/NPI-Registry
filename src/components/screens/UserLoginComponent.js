@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { View,Text,StyleSheet,Button, TextInput,Alert} from 'react-native';
+import { useDispatch } from 'react-redux';
+import { addUserName } from '../../redux/slice/userSlice';
 
 const UserLoginComponent = ({navigation}) =>{
     const [name,setName] = useState(null);
+    const dispatch = useDispatch()
     const onPress = () =>{
         if(name){
             navigation.navigate('Home',{
                 name:name
             });
+           dispatch(addUserName({username:name}))
             return
         }
      return Alert.alert('Enter Name','Name Field Cannot be empty')
